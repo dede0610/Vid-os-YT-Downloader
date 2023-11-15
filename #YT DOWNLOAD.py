@@ -21,10 +21,12 @@ def Download():
     yt = YouTube(url, use_oauth=True, allow_oauth_cache=True)
     yd = yt.streams.get_highest_resolution()
 
-    # ADD FOLDER HERE
-    yd.download(os.getcwd())#r"C:\Users\doria\OneDrive\Bureau\Vidéos YT")
-    
+    # Create Downloads folder if it doesn't already exist
+    if not os.path.exists("Downloads"):
+        os.makedirs("Downloads")
 
+    # Download video to Downloads folder
+    yd.download(os.path.join(os.getcwd(), "Downloads"))
 
 
 # frame
